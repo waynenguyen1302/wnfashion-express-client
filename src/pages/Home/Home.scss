@@ -1,0 +1,51 @@
+.home {
+    
+}
+
+@media screen and (max-width: 768px) {
+    .home {
+        .featuredProducts {
+            margin: 100px 100px;
+
+            .bottom {
+                .link {
+                    .card {
+                        width: 250px;
+                        height: 450px;
+                        margin-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (max-width: 625px) {
+    .home {
+        .featuredProducts {
+            margin: 50px 50px;
+
+            .top {       
+                width: 100%;    
+                flex-direction: column;
+            }
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);                
+            margin-bottom: 120px;
+            .col-l {
+                grid-column: 1 / span 2;
+            }
+        }
+
+        .contact {
+            .wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    }
+}

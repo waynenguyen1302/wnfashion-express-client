@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
+import Home from "./pages/Home/Home";
+import Product from "./pages/Product/Product";
+import Products from "./pages/Products/Products";
+import Store from "./pages/Store/Store";
+import "./App.scss"
+import { useRef } from "react";
+import { useScrollDirection } from "./hooks/useScrollDirection";
+
+
+const Layout = () => {
+  
+  const scrollContainerRef = useRef(null);
+  const scrollDirection = useScrollDirection(scrollContainerRef);
+
+  return (
+    <div className="app" ref={scrollContainerRef} style={{ overflow: "scroll" }}>
+      <Navbar scrollDirection={scrollDirection} />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/products/filter",
+        element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        element: <Product />,
+      },
+      {
+        path: "/products",
+        element: <Store />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RouterProvider router={router} />
     </div>
   );
 }
