@@ -16,8 +16,8 @@ const useFetch = (url) => {
         // console.log("Response:", response); // Log the entire response object
         setData(response.data);
       } catch (error) {
-        setError(error.response.data.error);
-        // console.log("Error:", error); // Log the error object
+        setError(error.message);
+        console.log("Error:", error.message); // Log the error object
       } finally {
         setLoading(false);
       }
