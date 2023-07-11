@@ -7,7 +7,7 @@ import useFetch from '../../hooks/useFetch'
 const FeaturedProducts = ({type}) => {
 
     const {data, loading, error} = useFetch(`/products?type=${type}`)
-    console.log(data)
+
     return (
     <div className='featuredProducts' >
         <div className="top">

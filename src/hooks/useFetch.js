@@ -13,11 +13,11 @@ const useFetch = (url) => {
 
       try {
         const response = await makeRequest.get(url);
-        // console.log("Response:", response); // Log the entire response object
+        console.log("Response:", response); // Log the entire response object
         setData(response.data);
       } catch (error) {
         setError(error.message);
-        console.log("Error:", error.message); // Log the error object
+        console.log("Error:", error.response); // Log the error object
       } finally {
         setLoading(false);
       }

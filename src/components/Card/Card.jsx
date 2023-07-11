@@ -26,8 +26,21 @@ const Card = ({ item }) => {
         </div>
         <h2>{item?.name.toString()}</h2>
         <div className="prices">
-          <h3>${item.promotion && item.price}</h3>
-          <h3>${item.price * (1 - item.promotion)}</h3>
+          {
+            item.promotion ? (
+              <>
+                <h3>${item.promotion && item.price}</h3>
+                <h3>${item.price * (1 - item.promotion)}</h3>
+              </>              
+            ) : 
+            (
+              <>
+                <h3 className="hidden"></h3>
+                <h3>${item.price}</h3>
+              </>  
+            )
+          }
+          
         </div>
       </div>
     </Link>
